@@ -71,10 +71,10 @@ int main(void)
 
 ISR(PORTA_PORT_vect)
 {
-// clear interrupt flags
-PORTA.INTFLAGS = 0xFF;
-// set increment to 0 to halt countdown
-g_running = 0;
+    // clear interrupt flags
+    PORTA.INTFLAGS = 0xFF;
+    // set increment to 0 to halt countdown
+    g_running = 0;
 
 }
 
