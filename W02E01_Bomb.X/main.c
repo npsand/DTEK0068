@@ -18,12 +18,12 @@
 #include <avr/interrupt.h>
 
 // global increment variable
-uint8_t g_running = 1;
+volatile uint8_t g_running = 1;
     
 int main(void)
 {
     // array containing numbers 0-9 and blank for seven segment display
-    volatile uint8_t seven_segment_numbers[] =
+    uint8_t seven_segment_numbers[] =
     {
         0b00111111, 0b00000110, 0b01011011, 
         0b01001111, 0b01100110, 0b01101101, 
