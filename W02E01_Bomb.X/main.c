@@ -18,7 +18,7 @@
 #include <avr/interrupt.h>
 
 // global increment variable
-volatile uint8_t g_running = 1;
+uint8_t g_running = 1;
     
 int main(void)
 {
