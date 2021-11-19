@@ -30,7 +30,7 @@
 // MACROS FOR DRIVING THE SERVO
 #define SERVO_PWM_PERIOD (0x1046)
 #define SERVO_PWM_DUTY_NEUTRAL (0x0138)
-#define SERVO_PWM_DUTY_MAX  (0x01A0)
+#define SERVO_PWM_DUTY_MAX  (0x00D0) //0x01A0
 
 // Number 0-10 for the seven segment display. A is signifying number 10.
 const uint8_t digit[] =
@@ -191,6 +191,7 @@ int main(void)
         // Display threshold on the seven segment display
         VPORTC.OUT = digit[threshold];
         
+        // Checks if LDR value is less than or equal to the threshold value
         if(!g_neutral && ldr_value <= threshold)
         {
             g_press = 1;
