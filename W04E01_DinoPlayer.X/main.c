@@ -197,7 +197,7 @@ int main(void)
             g_press = 1;
             // Wait for the clock to stabilise
             while(RTC.STATUS > 0);
-            // Set perioid to 8192
+            // Set perioid to 8192 for 250ms delay before clicking spacebar
             RTC.PER = 8192;
         }
     }
