@@ -111,7 +111,7 @@ int trimpot_read(void)
 {
     // Clear REFSEL
     ADC0.CTRLC &= ~ADC_REFSEL_VDDREF_gc;
-    // Set voltagerefrence to internal (2.5v)
+    // Set voltagerefrence to VDD (5v)
     ADC0.CTRLC |= ADC_REFSEL_VDDREF_gc;
     // Change MUXPOS to AIN14 to read TRIMPOT (PF4)
     ADC0.MUXPOS = ADC_MUXPOS_AIN14_gc;
@@ -164,11 +164,11 @@ int main(void)
     PORTE.PIN0CTRL = PORT_ISC_INPUT_DISABLE_gc;
     // Set prescaler of 16
     ADC0.CTRLC |= ADC_PRESC_DIV16_gc;
-    //ADC0.CTRLA = VREF_ADC0REFSEL_2V5_gc;
     // Enable ADC
     ADC0.CTRLA |= ADC_ENABLE_bm;
     // Set internal reference voltage to 2.5V
     VREF.CTRLA |= VREF_ADC0REFSEL_2V5_gc;
+    //ADC0.CTRLA = VREF_ADC0REFSEL_2V5_gc;
     
     // POTENTIOMETER
     // Set PF4 (AIN14) as input 
@@ -228,8 +228,6 @@ ISR(RTC_CNT_vect)
         TCA0.SINGLE.CMP2BUF = SERVO_PWM_DUTY_NEUTRAL;
         // Set g_neutral to 0 after servo is returned to neutral position
         g_neutral = 0;
-        // Set perioid to 4096 to wait for ~100ms
-        RTC.PER = 4096;
     }
     
 }
