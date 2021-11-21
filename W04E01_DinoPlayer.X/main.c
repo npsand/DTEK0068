@@ -91,7 +91,7 @@ void rtc_init(void)
     RTC.CTRLA = RTC_RTCEN_bm; 
 }
 
-int ldr_read(void)
+uint16_t ldr_read(void)
 {
     // Clear REFSEL
     ADC0.CTRLC &= ~ADC_REFSEL_VDDREF_gc;
@@ -107,7 +107,7 @@ int ldr_read(void)
     return ADC0.RES;
 }
 
-int trimpot_read(void)
+uint16_t trimpot_read(void)
 {
     // Clear REFSEL
     ADC0.CTRLC &= ~ADC_REFSEL_VDDREF_gc;
